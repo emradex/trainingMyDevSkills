@@ -1,59 +1,55 @@
-# Mauro Radesca — Portfolio
+# Mauro Radesca — Portfolio V3
 
-Portfolio personal de desarrollo y exploración creativa. La marca visible es **Mauro Radesca**; **ebisu** es el nombre previsto para el dominio.
+Portfolio de desarrollo e IT con React, TypeScript y Vite. La marca personal es Mauro Radesca; ebisu queda reservado como nombre del dominio. La rama v2-base conserva el prototipo anterior y su respaldo ZIP.
 
-## Versión base V2
+## Desarrollo local
 
-La referencia `v2-base` conserva el prototipo original de esta etapa: negro profundo, lima ácido y violeta eléctrico, con tipografía editorial e interacciones generativas. Los cambios futuros pueden desarrollarse en ramas y revisarse antes de incorporarlos a `main`.
+Requisitos: Node.js 24 o posterior y pnpm 11.25.0. Desde esta carpeta:
 
-El ZIP original `mauro-radesca-v2.zip` se conserva como respaldo independiente fuera de este repositorio. No es necesario modificarlo para seguir desarrollando.
+```sh
+pnpm install --frozen-lockfile
+pnpm run dev
+```
 
-## Abrir el sitio
+Abrir la dirección local indicada por Vite. Esta versión requiere un servidor local: no se inicia haciendo doble clic en el HTML.
 
-1. Descargar el repositorio y descomprimirlo, o clonarlo con Git.
-2. Abrir `index.html` en un navegador actual.
+```sh
+pnpm run check    # TypeScript
+pnpm run test     # Contratos de contenido y gráficos
+pnpm run build    # Comprobar tipos y compilar a dist/
+pnpm run preview  # Revisar producción
+```
 
-No requiere instalación, servidor, cuenta ni conexión a Internet. Los archivos `index.html`, `style.css`, `app.js` e `icon.svg` deben mantenerse juntos. También se puede servir esta carpeta con cualquier servidor de archivos estáticos.
+La configuración de pnpm copia dependencias y mantiene un almacén local ignorado por Git para permitir su uso en Windows sin enlaces simbólicos. Las versiones se conservan en el lockfile. Usar `pnpm run check`, no el comando interno `pnpm check`.
 
-## Qué incluye
+## Organización
 
-- Tema oscuro y claro.
-- Contenido en español e inglés.
-- Escultura de líneas en Canvas que responde al puntero y permite activar o pausar la animación.
-- Laboratorio de trama geométrica en SVG con densidad regulable.
-- Caso del propio portfolio, identificado como proyecto en desarrollo.
-- Diseño adaptable, navegación por teclado y respeto de la preferencia de movimiento reducido.
+- `src/app/`: composición, preferencias y registro de secciones.
+- `src/sections/`: Home, About, Projects, Lab y Contact, cada uno con su CSS Module.
+- `src/components/`: interfaz compartida y escultura.
+- `src/content/`: perfil, contactos, textos ES/EN, proyectos y tipos.
+- `src/hooks/`: navegación, medios y sombras.
+- `src/graphics/`: Canvas y geometría SVG.
+- `src/styles/`: variables del sistema visual y estilos globales.
+- `src/tests/`: contratos de contenido y límites de los gráficos.
+- `public/`: favicon, CV público y futuras portadas de proyectos.
 
-## Tecnología actual
+El registro controla el contenido y el menú. No hay textos con HTML incrustado ni manipulación del contenido de React mediante el DOM. Los gráficos dibujan en Canvas, y sus eventos se limpian al desmontarse.
 
-HTML, CSS, JavaScript, Canvas y SVG. Sin dependencias externas ni servicios de terceros en tiempo de ejecución.
+**Guía práctica:** [Cómo editar y ampliar el portfolio](docs/EDICION.md).
 
-React, TypeScript y una arquitectura de componentes forman parte de una etapa futura; no están implementados en esta base.
+## Funcionalidades
 
-## Archivos
+Inicio con nombre protagonista y firma; temas claro/oscuro; ES/EN; preferencias persistentes compatibles con V2; contacto y copia con alternativa manual; CV local reutilizado desde cabecera, inicio y contacto; detalle de proyectos accesible; escultura Canvas y laboratorio SVG; sombras de hasta 4 px sin inercia artificial. Fuentes alojadas junto al sitio. Sin servicios externos en tiempo de ejecución.
 
-| Archivo | Responsabilidad |
-| --- | --- |
-| `index.html` | Estructura, secciones y contenido inicial |
-| `style.css` | Identidad visual, temas y adaptación a pantallas |
-| `app.js` | Idiomas, temas, gráficos e interacciones |
-| `icon.svg` | Icono del sitio |
+Se mantienen las anclas #inicio, #sobre-mi, #proyectos, #laboratorio y #contacto. El escritorio interactivo alternativo queda para otra etapa. El único proyecto es el propio portfolio, identificado en desarrollo.
 
-## Próximas etapas
+## CV público
 
-- Revisar la biografía y completar los canales reales de contacto.
-- Incorporar proyectos reales con objetivos, decisiones, capturas y enlaces a su código.
-- Migrar a React y TypeScript conservando esta base como referencia.
-- Definir el dominio y la publicación definitiva.
+Dos páginas en español, a partir del CV General IT v1. Conserva antecedentes y fechas, actualiza LinkedIn y sustituye los contactos de referencias por “Referencias disponibles a solicitud”. Se retiró la duración aproximada del perfil y se conservaron las fechas exactas de Sabre. La fuente privada no se incluye en el repositorio. La interfaz inglesa indica que el PDF está en español.
 
-Los textos de presentación siguen siendo borradores. No se atribuyen experiencia profesional ni proyectos que todavía no existen.
+## Validación y publicación
 
-## Comprobar un cambio
+Comprobar tipos, pruebas y compilación; revisar ambos temas e idiomas a 320 px, tableta y escritorio. Probar navegación, foco, Escape, contacto, PDF y gráficos. El resultado dist/ se sirve por HTTP en Sites u otro alojamiento estático. No hay servidor, base de datos ni autenticación propia.
 
-Revisar navegación, español/inglés, ambos temas, apertura y cierre del detalle, gráficos y deslizador. Probar escritorio y móvil, incluyendo un ancho de 320 px y el cierre del detalle con Escape.
-
-La sintaxis de JavaScript puede comprobarse, si Node.js está instalado, con `node --check app.js`.
-
-## Versionado
-
-`main` contiene la versión de referencia. Cada funcionalidad nueva puede trabajarse en una rama, por ejemplo `feat/contacto`. La referencia `v2-base` debe conservarse en su commit original para poder comparar o recuperar este punto de partida.
+Conservar v2-base; trabajar en ramas y revisar los cambios antes de integrarlos en main. node_modules/, .sites-runtime/ y dist/ son generados e ignorados por Git.
