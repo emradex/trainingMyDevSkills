@@ -63,10 +63,22 @@ No enlazar un archivo temporal de un chat o que solo exista en una PC: el PDF de
 
 `PreferencesProvider` centraliza tema e idioma. Usa `mr-theme` y `mr-language` y recupera también `mr-v2-*`. Sin almacenamiento disponible, los controles funcionan en memoria. Por defecto: oscuro y español.
 
-`usePointerShadow` limita el efecto a 4 px y al siguiente cuadro, sin inercia. Solo se habilita con ratón y sin movimiento reducido; no sustituir el cursor. La escultura no se anima sola, pausa al ocultar la pestaña y queda estática con movimiento reducido. El deslizador se puede operar con las flechas del teclado.
+`usePointerShadow` limita el efecto a 4 px y al siguiente cuadro, sin inercia. Solo se habilita con ratón y sin movimiento reducido; no sustituir el cursor. La escultura no se anima sola y pausa al ocultar la pestaña. Con movimiento reducido se desactiva la animación automática; el giro manual sigue disponible. Los deslizadores se pueden operar con las flechas del teclado.
 
 ## Comprobar y versionar
 
 Ejecutar `pnpm run check`, `pnpm run test`, `pnpm run build` y `pnpm run preview`. Probar ES/EN, claro/oscuro, 320 px, tableta y escritorio. Revisar navegación, teclado y foco, sombras, gráficos, deslizador, detalle con Escape y retorno de foco, copia del correo, enlaces externos y descarga del PDF.
 
 Crear una rama por cambio y una propuesta de cambios antes de integrar en main. Conservar v2-base. Los directorios node_modules/, .sites-runtime/ y dist/ son generados e ignorados por Git.
+
+## Figuras y laboratorio
+
+La escultura ofrece Nudo, Anillo y Flor. Arrastrar con mouse o dedo gira la figura; la orientación se conserva al soltar, cambiar la forma o alternar el tema. Al enfocarla con Tab, las flechas rotan e Inicio reinicia. Reiniciar vista detiene la animación y recupera la orientación inicial. Arrastrar también pausa la animación. El área del gráfico captura el gesto táctil; para desplazar la página, usar el espacio exterior.
+
+En `src/graphics/sculpture.ts`, `sculptureShapes` registra las figuras, `surface` define su geometría y `drawSculpture` proyecta las líneas con profundidad. Los controles y el ciclo de vida están en `Sculpture.tsx`. Para añadir una figura, incorporar su clave, geometría y traducciones. No añadir eventos globales sin su limpieza correspondiente.
+
+El laboratorio conserva Moiré y suma Roseta y Órbitas. Densidad controla las líneas; Deformación cambia la geometría. Variar pasa al siguiente patrón con parámetros aleatorios acotados; Restablecer vuelve a Roseta / 24 / 48. La geometría está en `src/graphics/moire.ts`, separada de la interfaz de `Lab.tsx`. No hay animación automática en el laboratorio.
+
+`ChoiceGroup` es el selector compartido, con botones accesibles de estado pulsado. Todos los controles tienen textos ES/EN y un área mínima de 44 px de alto.
+
+El modo oscuro conserva lima y violeta. El claro tiene coral y violeta sobre base cálida. `--art-primary` y `--art-secondary` controlan las figuras; los tokens históricos `--lime*` siguen siendo el acento semántico de la interfaz. La retícula general usa `--page-grid` y `--page-grid-major`; la de los paneles usa `--grid`. Son fondos CSS estáticos, sin un bucle Canvas adicional.
