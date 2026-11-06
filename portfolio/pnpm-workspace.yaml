@@ -1,0 +1,7 @@
+packages:
+  - '.'
+minimumReleaseAgeExclude:
+  - vite@8.3.6
+nodeLinker: hoisted
+packageImportMethod: copy
+storeDir: .sites-runtime/pnpm-store
