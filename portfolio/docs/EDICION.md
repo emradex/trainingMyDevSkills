@@ -63,7 +63,7 @@ No enlazar un archivo temporal de un chat o que solo exista en una PC: el PDF de
 
 `PreferencesProvider` centraliza tema e idioma. Usa `mr-theme` y `mr-language` y recupera también `mr-v2-*`. Sin almacenamiento disponible, los controles funcionan en memoria. Por defecto: oscuro y español.
 
-`usePointerShadow` limita el efecto a 4 px y al siguiente cuadro, sin inercia. Solo se habilita con ratón y sin movimiento reducido; no sustituir el cursor. La escultura no se anima sola y pausa al ocultar la pestaña. Con movimiento reducido se desactiva la animación automática; el giro manual sigue disponible. Los deslizadores se pueden operar con las flechas del teclado.
+`usePointerShadow` limita el efecto a 4 px y al siguiente cuadro, sin inercia. Solo se habilita con ratón y sin movimiento reducido; no sustituir el cursor. La escultura inicia con giro lento; suspende el dibujo fuera de pantalla o con la pestaña oculta, sin perder la preferencia de reproducción. Con movimiento reducido se desactiva la animación automática; el giro manual sigue disponible. Los deslizadores se pueden operar con las flechas del teclado.
 
 ## Comprobar y versionar
 
@@ -82,3 +82,13 @@ El laboratorio conserva Moiré y suma Roseta y Órbitas. Densidad controla las l
 `ChoiceGroup` es el selector compartido, con botones accesibles de estado pulsado. Todos los controles tienen textos ES/EN y un área mínima de 44 px de alto.
 
 El modo oscuro conserva lima y violeta. El claro tiene coral y violeta sobre base cálida. `--art-primary` y `--art-secondary` controlan las figuras; los tokens históricos `--lime*` siguen siendo el acento semántico de la interfaz. La retícula general usa `--page-grid` y `--page-grid-major`; la de los paneles usa `--grid`. Son fondos CSS estáticos, sin un bucle Canvas adicional.
+
+## Dock, música y tarjetas de prueba
+
+La cabecera muestra Bienvenido/Welcome. El dock reutiliza el registro de secciones y aparece cuando la cabecera sale de pantalla. Sus estilos reservan espacio al final de la página y usan el área segura en móvil. La sección activa se calcula al cruzar el 35% superior del viewport y también funciona al volver hacia arriba.
+
+Para sustituir la música, cambiar únicamente playlistId en src/content/music.ts. Modificar los temas de esa misma playlist en Spotify no requiere recompilar. El iframe se carga al abrir Música; minimizarlo lo conserva montado y el audio sigue. El estado y la pausa usan la API oficial, sin cuentas ni credenciales propias. Si la API falla, queda el enlace externo. No se garantiza reproducción completa: Spotify puede ofrecer muestras o pedir inicio de sesión. El cambio de idioma y tema conserva el reproductor.
+
+El carrusel usa desplazamiento nativo, scroll-snap, flechas, teclado y gesto horizontal táctil; no avanza solo ni hace un bucle. Los cortes glitch duran 400 ms al cambiar la tarjeta central. La figura 3D usa una silueta previa durante 400 ms al cambiar de forma; gira aproximadamente una vuelta cada 48 segundos, a un máximo aproximado de 30 dibujos por segundo. Arrastrar o usar flechas la deja pausada; Animar reanuda y Reiniciar vista la deja quieta en la orientación inicial. Movimiento reducido elimina giro inicial e interferencias.
+
+Las entradas con status: placeholder se identifican como Imagen de prueba; no deben tener repositorio. Incluyen coverAlt en ambos idiomas y attribution con autor, fuente, licencia y enlace de licencia. Se abren como fotografías ampliadas con créditos, sin una historia de proyecto inventada. Los originales locales y sus condiciones están en public/projects/ASSET-CREDITS.md. Para retirarlas, eliminar las dos entradas de referencia y sus imágenes; el contador y los límites del carrusel se recalculan. Las fuentes son decorativas dentro de la tarjeta y tienen descripción en el detalle.

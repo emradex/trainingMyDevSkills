@@ -1,3 +1,17 @@
+# Prueba glitch, Spotify y navegación — 10 de noviembre de 2026
+
+- TypeScript y producción correctos. Catorce pruebas sobre contenido, traducciones, PDF, gráficos, límites del carrusel, atribución de imágenes y carga opcional de Spotify.
+- Navegador: modos claro/oscuro y ES/EN; 320, 768 y 1280 px sin desbordes horizontales. Panel de Spotify sin desborde a 320 px.
+- Playlist Night visions cargada desde el enlace proporcionado. Sin iframe antes de abrir Música. Probados reproducción de muestra, minimización conservando el mismo iframe, indicador real y pausa desde el dock. La reproducción completa depende de Spotify y la sesión del visitante.
+- Carrusel: tres tarjetas, flechas y extremos desactivados, desplazamiento con teclado y detalle de ambas imágenes con crédito/licencia; Escape cierra y devuelve el foco. Imágenes provisionales diferenciadas del único proyecto real.
+- Dock: aparición al dejar atrás la cabecera, indicador por sección y adaptación a dos filas en móvil; área segura y espacio inferior reservados.
+- Escultura: giro inicial, cambio de forma con interferencia, arrastre real con mouse que pausa, reanudación y reinicio. El dibujo se suspende fuera de pantalla y con la pestaña oculta.
+- Glitch limitado a interacciones; sin destellos de pantalla completa. Revisión de las condiciones de movimiento reducido en CSS y código, sin cambiar las preferencias del sistema.
+- Consola sin errores de la aplicación durante la revisión. Interacción táctil implementada con eventos de puntero y desplazamiento nativo; pendiente probar en un teléfono físico.
+- No se añadieron dependencias. Bundle JS comprimido aproximado: 84,83 kB, frente a 81,08 kB de la versión anterior. Esta medida es tamaño de descarga, no porcentaje de CPU ni de cupo de Codex. Fotos: unos 249 kB en total; carga diferida y caché del navegador para las copias visuales del glitch.
+
+## Validación histórica de la base
+
 # Validación de Portfolio V3 y evolución de gráficos
 
 ## Gráficos interactivos — noviembre 2026

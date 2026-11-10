@@ -1,6 +1,7 @@
 import type { Language, Localized } from './types';
 
 const es = {
+  projectSingular: 'PROYECTO', projectPlural: 'PROYECTOS', testImages: 'IMÁGENES DE PRUEBA', carouselRole: 'carrusel', slideRole: 'tarjeta', welcome: 'Bienvenido', music: 'Música', musicPanel: 'Reproductor de Spotify', musicSelection: 'Mi selección', musicNote: 'Elegí un tema. Podés minimizar el panel y seguir escuchando.', minimizeMusic: 'Minimizar reproductor', musicLoading: 'Cargando Spotify…', musicUnavailable: 'No se pudo cargar el reproductor. Podés escuchar la playlist en Spotify.', openSpotify: 'Abrir en Spotify', musicPlaying: 'Música en reproducción', pauseMusic: 'Pausar música', floatingNav: 'Navegación flotante', labShort: 'Lab', placeholder: 'IMAGEN DE PRUEBA', viewImage: 'Ver imagen', sourceImage: 'Fuente de la imagen', provisionalNote: '1 PROYECTO + 2 IMÁGENES DE PRUEBA', placeholderFoot: 'REFERENCIA EXTERNA · CONTENIDO PROVISIONAL', carouselLabel: 'Galería de proyectos y referencias', previousProject: 'Tarjeta anterior', nextProject: 'Tarjeta siguiente',
   skip: 'Ir al contenido', navLabel: 'Navegación principal',
   home: 'Inicio', about: 'Sobre mí', projects: 'Proyectos', lab: 'Laboratorio', contact: 'Contacto',
   light: 'Activar modo claro', dark: 'Activar modo oscuro', language: 'Idioma',
@@ -21,7 +22,7 @@ const es = {
   principle2: 'Hacerlo propio.', principle2Body: 'Buscar claridad y dejar espacio para una idea inesperada.',
   principle3: 'Seguir iterando.', principle3Body: 'Probar, revisar y aprender con cada versión.',
   projectsLabel: '02 / PROYECTOS', projectsMeta: 'UN PRIMER PASO, EN TIEMPO REAL',
-  projectsTitle: 'El sitio también es el proyecto.', projectsIntro: 'El primer caso es este espacio. Los próximos, cuando estén listos.',
+  projectsTitle: 'El sitio también es el proyecto.', projectsIntro: 'Este espacio es el primer proyecto. Las imágenes de ESP32 son referencias provisionales para explorar la galería.',
   development: 'EN DESARROLLO', published: 'PUBLICADO', process: 'Ver el proceso', closeProject: 'Cerrar proyecto',
   projectNote: 'POR AHORA, SIN MÁS PROYECTOS PUBLICADOS.', totalProjects: 'PROYECTOS EN EL PORTFOLIO', sourceCode: 'Ver código en GitHub', caseFoot: 'UN PROCESO ABIERTO. NO UN CASO TERMINADO.',
   labLabel: '03 / LABORATORIO', labMeta: 'JUGAR ES PARTE DEL PROCESO.', labTitle: 'Un poco de orden. Un poco de ruido.',
@@ -35,6 +36,7 @@ const es = {
 };
 export type Copy = { [K in keyof typeof es]: string };
 const en: Copy = {
+  projectSingular: 'PROJECT', projectPlural: 'PROJECTS', testImages: 'TEST IMAGES', carouselRole: 'carousel', slideRole: 'slide', welcome: 'Welcome', music: 'Music', musicPanel: 'Spotify player', musicSelection: 'My selection', musicNote: 'Pick a track. Minimize the panel and keep listening.', minimizeMusic: 'Minimize player', musicLoading: 'Loading Spotify…', musicUnavailable: 'The player could not load. You can listen to the playlist on Spotify.', openSpotify: 'Open in Spotify', musicPlaying: 'Music is playing', pauseMusic: 'Pause music', floatingNav: 'Floating navigation', labShort: 'Lab', placeholder: 'TEST IMAGE', viewImage: 'View image', sourceImage: 'Image source', provisionalNote: '1 PROJECT + 2 TEST IMAGES', placeholderFoot: 'EXTERNAL REFERENCE · TEMPORARY CONTENT', carouselLabel: 'Project and reference gallery', previousProject: 'Previous card', nextProject: 'Next card',
   skip: 'Skip to content', navLabel: 'Main navigation', home: 'Home', about: 'About', projects: 'Projects', lab: 'Lab', contact: 'Contact',
   light: 'Switch to light mode', dark: 'Switch to dark mode', language: 'Language', cv: 'Download CV', cvLanguage: 'PDF · Spanish · 2 pages',
   heroLabel: 'DEVELOPMENT + IT + CREATIVE EXPLORATION', signature: 'Logic. Form. Character.',
@@ -49,7 +51,7 @@ const en: Copy = {
   aboutBody: 'I study Information Technology at ORT Uruguay. My experience in application support at Sabre brought me closer to troubleshooting, APIs and collaboration with technical teams. Today I keep learning and building my own path in software development.',
   focus: 'WEB DEVELOPMENT / APPLICATION SUPPORT / INTERFACES',
   principle1: 'Think first.', principle1Body: 'Understand the problem before choosing the tools.', principle2: 'Make it personal.', principle2Body: 'Seek clarity and leave room for an unexpected idea.', principle3: 'Keep iterating.', principle3Body: 'Test, review and learn with every version.',
-  projectsLabel: '02 / PROJECTS', projectsMeta: 'A FIRST STEP, IN REAL TIME', projectsTitle: 'The site is also the project.', projectsIntro: 'The first case is this space. The next ones, when they’re ready.',
+  projectsLabel: '02 / PROJECTS', projectsMeta: 'A FIRST STEP, IN REAL TIME', projectsTitle: 'The site is also the project.', projectsIntro: 'This space is the first project. The ESP32 images are temporary references for exploring the gallery.',
   development: 'IN DEVELOPMENT', published: 'PUBLISHED', process: 'Explore the process', closeProject: 'Close project', projectNote: 'NO OTHER PUBLISHED PROJECTS FOR NOW.', totalProjects: 'PROJECTS IN THE PORTFOLIO', sourceCode: 'View code on GitHub', caseFoot: 'AN OPEN PROCESS. NOT A FINISHED CASE.',
   labLabel: '03 / LABORATORY', labMeta: 'PLAY IS PART OF THE PROCESS.', labTitle: 'A little order. A little noise.', labBody: 'Shapes that change with you. Pick a pattern, cross its lines and bend it until something unexpected appears.', density: 'DENSITY', structure: 'STRUCTURE', noise: 'NOISE', moireAlt: 'Interactive geometric pattern',
   contactLabel: '04 / NEXT STEP', contactTitle: 'Ideas get better when you share them.', contactBody: 'To talk about an opportunity, a project or an idea, send me an email.', copyEmail: 'Copy email', copied: 'Email copied', copyFailed: 'You can select the email and copy it manually.', emailLabel: 'EMAIL', cvIntro: 'My IT background, in two pages.', footer: 'PERSONAL EDITION 03', top: 'BACK TO TOP',

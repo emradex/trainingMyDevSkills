@@ -1,6 +1,7 @@
 import { useEffect, useRef, type MouseEvent } from 'react';
 import { useCopy, usePreferences } from '../app/Preferences';
 import type { Project } from '../content/types';
+import { assetUrl } from '../content/site';
 import styles from './ProjectDetail.module.css';
 export function ProjectDetail({ project, index, onClose }: { project: Project; index: number; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null), { language } = usePreferences(), t = useCopy();
@@ -16,8 +17,9 @@ export function ProjectDetail({ project, index, onClose }: { project: Project; i
   }
   return <dialog ref={dialog} className={styles.dialog} aria-labelledby="project-detail-title" onCancel={event => { event.preventDefault(); onClose(); }} onClick={backdrop}>
     <div className={styles.top}><span>CASE / {String(index + 1).padStart(3, '0')} — V.03</span><button autoFocus onClick={onClose} aria-label={t.closeProject}>×</button></div>
-    <p className={styles.status}>{project.status === 'published' ? t.published : t.development}</p><h2 id="project-detail-title">{project.title[language]}</h2><p className={styles.lead}>{project.summary[language]}</p>
+    <p className={styles.status}>{project.status === 'placeholder' ? t.placeholder : project.status === 'published' ? t.published : t.development}</p><h2 id="project-detail-title">{project.title[language]}</h2><p className={styles.lead}>{project.summary[language]}</p>
+    {project.status === 'placeholder' && project.cover && <figure className={styles.reference}><img src={assetUrl(project.cover)} alt={project.coverAlt?.[language] ?? project.title[language]}/>{project.attribution && <figcaption>{project.attribution.author} · <a href={project.attribution.licenseUrl} target="_blank" rel="noopener noreferrer">{project.attribution.license}</a> · <a href={project.attribution.url} target="_blank" rel="noopener noreferrer">{t.sourceImage} ↗</a></figcaption>}</figure>}
     {project.story.map((item, index) => <div className={styles.row} key={index}><h3>{item.title[language]}</h3><p>{item.body[language]}</p></div>)}
-    {project.repository && <a className={styles.source} href={project.repository} target="_blank" rel="noopener noreferrer">{t.sourceCode} ↗</a>}<p className={styles.foot}>{t.caseFoot}</p>
+    {project.repository && <a className={styles.source} href={project.repository} target="_blank" rel="noopener noreferrer">{t.sourceCode} ↗</a>}<p className={styles.foot}>{project.status === 'placeholder' ? t.placeholderFoot : t.caseFoot}</p>
   </dialog>;
 }
