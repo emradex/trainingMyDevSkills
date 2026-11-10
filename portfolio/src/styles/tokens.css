@@ -1,0 +1,23 @@
+:root {
+  color-scheme: dark;
+  --background: #0a0a0c; --foreground: #f1f0eb; --muted: #aaaab3; --surface: #141417;
+  --line: #ffffff29; --border-strong: #ffffff66;
+  --lime: #ceff45; --lime-hover: #dfff83; --on-lime: #101307; --lime-ink: #ceff45;
+  --violet-ink: #b28aff; --violet-haze: #9460ff15;
+  --art-primary: #ceff45; --art-secondary: #b28aff;
+  --shadow: #9460ff60; --title-shadow: #9460ff55; --panel-shadow: #00000030;
+  --grid: #ffffff0a; --page-grid: #ffffff06; --page-grid-major: #b28aff08;
+  --font: 'Space Grotesk Variable',Arial,Helvetica,sans-serif; --mono: 'Courier New',monospace; --content-width: 1400px;
+}
+/* Light mode has its own warm coral / ink violet palette. Legacy lime token names
+   are retained so shared controls continue to use the same semantic accent. */
+:root[data-theme=light] {
+  color-scheme: light;
+  --background: #f5f1eb; --foreground: #201d2a; --muted: #625969; --surface: #eae5e0;
+  --line: #35254030; --border-strong: #35254080;
+  --lime: #ffb28a; --lime-hover: #ffa77a; --on-lime: #26170f; --lime-ink: #9c3b21;
+  --violet-ink: #6030b2; --violet-haze: #7940c410;
+  --art-primary: #b34025; --art-secondary: #6330bd;
+  --shadow: #352540a0; --title-shadow: #6030b230; --panel-shadow: #35254010;
+  --grid: #49305c0d; --page-grid: #49305c08; --page-grid-major: #6030b20a;
+}

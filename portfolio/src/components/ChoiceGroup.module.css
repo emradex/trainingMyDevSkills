@@ -1,0 +1,4 @@
+.group { display: flex; flex-wrap: wrap; gap: 6px; }
+.group button { min-height: 44px; padding: 8px 13px; border: 1px solid var(--border-strong); border-radius: 3px; background: var(--background); color: var(--muted); font-size: 12px; line-height: 1.2; }
+.group button:hover { color: var(--foreground); border-color: var(--violet-ink); }
+.group button[aria-pressed=true] { background: var(--foreground); color: var(--background); border-color: var(--foreground); }

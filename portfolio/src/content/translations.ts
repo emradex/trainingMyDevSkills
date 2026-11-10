@@ -1,0 +1,62 @@
+import type { Language, Localized } from './types';
+
+const es = {
+  skip: 'Ir al contenido', navLabel: 'Navegación principal',
+  home: 'Inicio', about: 'Sobre mí', projects: 'Proyectos', lab: 'Laboratorio', contact: 'Contacto',
+  light: 'Activar modo claro', dark: 'Activar modo oscuro', language: 'Idioma',
+  cv: 'Descargar CV', cvLanguage: 'PDF · Español · 2 páginas',
+  heroLabel: 'DESARROLLO + IT + EXPLORACIÓN CREATIVA',
+  signature: 'Lógica. Forma. Carácter.', heroRole: 'Estudiante de TI. Experiencia en soporte de aplicaciones. Curiosidad por construir.',
+  heroBody: 'Soy Mauro. Me interesa entender cómo funcionan las cosas, resolver problemas y dar forma a experiencias digitales con identidad propia.',
+  explore: 'Explorar proyectos', contactAction: 'Hablemos', heroFooter: 'CURIOSIDAD COMO PUNTO DE PARTIDA.', scroll: 'SEGUÍ EXPLORANDO',
+  artLabel: 'ESTUDIO DE FORMA / 01', artHint: 'ARRASTRÁ PARA GIRAR · FLECHAS PARA ROTAR · INICIO PARA REINICIAR',
+  artAlt: 'Escultura tridimensional interactiva', animate: 'Animar', pause: 'Pausar',
+  form: 'FORMA', knot: 'Nudo', torus: 'Anillo', bloom: 'Flor', resetView: 'Reiniciar vista', reducedArt: 'Animación automática desactivada por tu preferencia de movimiento. Podés girar la figura manualmente.',
+  pattern: 'Patrón', rosette: 'Roseta', orbits: 'Órbitas', moire: 'Moiré', deformation: 'DEFORMACIÓN', vary: 'Variar', resetPattern: 'Restablecer', lines: 'LÍNEAS',
+  aboutLabel: '01 / DETRÁS DEL CÓDIGO', aboutTitle: 'Una mirada técnica. Una inquietud creativa.',
+  aboutLead: 'Me interesa el punto donde la lógica se encuentra con el diseño.',
+  aboutBody: 'Estudio Analista en Tecnologías de la Información en ORT Uruguay. Mi experiencia en soporte de aplicaciones en Sabre me acercó al diagnóstico de problemas, las APIs y el trabajo con equipos técnicos. Hoy sigo aprendiendo y construyendo mi propio recorrido en desarrollo de software.',
+  focus: 'DESARROLLO WEB / SOPORTE DE APLICACIONES / INTERFACES',
+  principle1: 'Pensar primero.', principle1Body: 'Entender el problema antes de elegir las herramientas.',
+  principle2: 'Hacerlo propio.', principle2Body: 'Buscar claridad y dejar espacio para una idea inesperada.',
+  principle3: 'Seguir iterando.', principle3Body: 'Probar, revisar y aprender con cada versión.',
+  projectsLabel: '02 / PROYECTOS', projectsMeta: 'UN PRIMER PASO, EN TIEMPO REAL',
+  projectsTitle: 'El sitio también es el proyecto.', projectsIntro: 'El primer caso es este espacio. Los próximos, cuando estén listos.',
+  development: 'EN DESARROLLO', published: 'PUBLICADO', process: 'Ver el proceso', closeProject: 'Cerrar proyecto',
+  projectNote: 'POR AHORA, SIN MÁS PROYECTOS PUBLICADOS.', totalProjects: 'PROYECTOS EN EL PORTFOLIO', sourceCode: 'Ver código en GitHub', caseFoot: 'UN PROCESO ABIERTO. NO UN CASO TERMINADO.',
+  labLabel: '03 / LABORATORIO', labMeta: 'JUGAR ES PARTE DEL PROCESO.', labTitle: 'Un poco de orden. Un poco de ruido.',
+  labBody: 'Formas que cambian con vos. Elegí un patrón, cruzá sus líneas y deformalo hasta encontrar algo inesperado.',
+  density: 'DENSIDAD', structure: 'ESTRUCTURA', noise: 'RUIDO', moireAlt: 'Patrón geométrico interactivo',
+  contactLabel: '04 / SIGUIENTE PASO', contactTitle: 'Las ideas mejoran cuando se comparten.',
+  contactBody: 'Para conversar sobre una oportunidad, un proyecto o una idea, escribime.',
+  copyEmail: 'Copiar correo', copied: 'Correo copiado', copyFailed: 'Podés seleccionar el correo y copiarlo manualmente.',
+  emailLabel: 'CORREO', cvIntro: 'Mi recorrido en IT, en dos páginas.',
+  footer: 'EDICIÓN PERSONAL 03', top: 'VOLVER ARRIBA',
+};
+export type Copy = { [K in keyof typeof es]: string };
+const en: Copy = {
+  skip: 'Skip to content', navLabel: 'Main navigation', home: 'Home', about: 'About', projects: 'Projects', lab: 'Lab', contact: 'Contact',
+  light: 'Switch to light mode', dark: 'Switch to dark mode', language: 'Language', cv: 'Download CV', cvLanguage: 'PDF · Spanish · 2 pages',
+  heroLabel: 'DEVELOPMENT + IT + CREATIVE EXPLORATION', signature: 'Logic. Form. Character.',
+  heroRole: 'IT student. Experience in application support. Curious about building.',
+  heroBody: 'I’m Mauro. I’m interested in understanding how things work, solving problems and shaping digital experiences with a character of their own.',
+  explore: 'Explore projects', contactAction: 'Let’s talk', heroFooter: 'CURIOSITY AS A STARTING POINT.', scroll: 'KEEP EXPLORING',
+  artLabel: 'FORM STUDY / 01', artHint: 'DRAG TO ROTATE · ARROW KEYS TO TURN · HOME TO RESET', artAlt: 'Interactive three-dimensional sculpture', animate: 'Animate', pause: 'Pause',
+  form: 'SHAPE', knot: 'Knot', torus: 'Ring', bloom: 'Bloom', resetView: 'Reset view', reducedArt: 'Automatic animation is off to respect your motion preference. You can still rotate the shape manually.',
+  pattern: 'Pattern', rosette: 'Rosette', orbits: 'Orbits', moire: 'Moiré', deformation: 'DEFORMATION', vary: 'Remix', resetPattern: 'Reset', lines: 'LINES',
+  aboutLabel: '01 / BEHIND THE CODE', aboutTitle: 'A technical perspective. A creative curiosity.',
+  aboutLead: 'I’m interested in the point where logic meets design.',
+  aboutBody: 'I study Information Technology at ORT Uruguay. My experience in application support at Sabre brought me closer to troubleshooting, APIs and collaboration with technical teams. Today I keep learning and building my own path in software development.',
+  focus: 'WEB DEVELOPMENT / APPLICATION SUPPORT / INTERFACES',
+  principle1: 'Think first.', principle1Body: 'Understand the problem before choosing the tools.', principle2: 'Make it personal.', principle2Body: 'Seek clarity and leave room for an unexpected idea.', principle3: 'Keep iterating.', principle3Body: 'Test, review and learn with every version.',
+  projectsLabel: '02 / PROJECTS', projectsMeta: 'A FIRST STEP, IN REAL TIME', projectsTitle: 'The site is also the project.', projectsIntro: 'The first case is this space. The next ones, when they’re ready.',
+  development: 'IN DEVELOPMENT', published: 'PUBLISHED', process: 'Explore the process', closeProject: 'Close project', projectNote: 'NO OTHER PUBLISHED PROJECTS FOR NOW.', totalProjects: 'PROJECTS IN THE PORTFOLIO', sourceCode: 'View code on GitHub', caseFoot: 'AN OPEN PROCESS. NOT A FINISHED CASE.',
+  labLabel: '03 / LABORATORY', labMeta: 'PLAY IS PART OF THE PROCESS.', labTitle: 'A little order. A little noise.', labBody: 'Shapes that change with you. Pick a pattern, cross its lines and bend it until something unexpected appears.', density: 'DENSITY', structure: 'STRUCTURE', noise: 'NOISE', moireAlt: 'Interactive geometric pattern',
+  contactLabel: '04 / NEXT STEP', contactTitle: 'Ideas get better when you share them.', contactBody: 'To talk about an opportunity, a project or an idea, send me an email.', copyEmail: 'Copy email', copied: 'Email copied', copyFailed: 'You can select the email and copy it manually.', emailLabel: 'EMAIL', cvIntro: 'My IT background, in two pages.', footer: 'PERSONAL EDITION 03', top: 'BACK TO TOP',
+};
+export const translations: Localized<Copy> = { es, en };
+export const sectionLabels: Record<string, Localized<string>> = {
+  inicio: { es: es.home, en: en.home }, 'sobre-mi': { es: es.about, en: en.about },
+  proyectos: { es: es.projects, en: en.projects }, laboratorio: { es: es.lab, en: en.lab }, contacto: { es: es.contact, en: en.contact },
+};
+export function getCopy(language: Language): Copy { return translations[language]; }
