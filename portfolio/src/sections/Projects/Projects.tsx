@@ -33,15 +33,15 @@ export default function Projects({ id }: { id: string }) {
     scroller.addEventListener('scroll', update, { passive: true }); update();
     return () => { observer.disconnect(); cancelAnimationFrame(frame); scroller.removeEventListener('scroll', update); };
   }, []);
-  const real = projects.filter(project => project.status !== 'placeholder').length;
-  const placeholders = projects.length - real;
+  const real = projects.filter(project => project.status !== 'placeholder' && project.status !== 'guide').length;
+  const guides = projects.filter(project => project.status === 'guide').length;
   return <section id={id} className={`section wrap ${styles.section}`} aria-labelledby="projects-title">
     <SectionLabel text={t.projectsLabel} meta={t.projectsMeta}/><SectionHeading id="projects-title" title={t.projectsTitle} description={t.projectsIntro}/>
     <div className={styles.controls}><span className={styles.counter} role="status" aria-live="polite">{String(active + 1).padStart(2,'0')} / {String(projects.length).padStart(2,'0')} <span aria-hidden="true">— {projects[active].title[language]}</span></span><div><button type="button" className="signal-button" disabled={active === 0} aria-label={t.previousProject} onClick={() => select(active - 1)}>←</button><button type="button" className="signal-button" disabled={active === projects.length - 1} aria-label={t.nextProject} onClick={() => select(active + 1)}>→</button></div></div>
     <div ref={track} className={styles.track} role="region" aria-roledescription={t.carouselRole} aria-label={t.carouselLabel} tabIndex={0} onKeyDown={event => { if (event.target !== event.currentTarget) return; if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); select(active + (event.key === 'ArrowRight' ? 1 : -1)); } }}>
       {projects.map((project, index) => <div key={project.id} className={styles.slide} data-active={active === index || undefined} role="group" aria-roledescription={t.slideRole} aria-label={`${index + 1} / ${projects.length}`} onFocusCapture={() => { if (activeRef.current !== index) select(index); }}><ProjectCard project={project} index={index} signal={index === active ? signal : 0} onOpen={() => setSelected(project)}/></div>)}
     </div>
-    <div className={styles.note}><span>{placeholders ? `${real} ${real === 1 ? t.projectSingular : t.projectPlural} + ${placeholders} ${placeholders === 1 ? t.placeholder : t.testImages}` : `${real} ${t.totalProjects}`}</span><span>[ {String(projects.length).padStart(2,'0')} — ∞ ]</span></div>
+    <div className={styles.note}><span>{real} {real === 1 ? t.projectSingular : t.projectPlural} + {guides} {t.learningGuides}</span><span>[ {String(projects.length).padStart(2,'0')} — ∞ ]</span></div>
     {selected && <ProjectDetail project={selected} index={projects.findIndex(project => project.id === selected.id)} onClose={() => setSelected(null)}/>}
   </section>;
 }

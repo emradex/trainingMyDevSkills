@@ -56,6 +56,6 @@ Conservar v2-base; trabajar en ramas y revisar los cambios antes de integrarlos 
 
 ## Prueba de navegación y movimiento
 
-La rama feat/portfolio-glitch añade Bienvenido/Welcome, un dock inferior que aparece al salir de la cabecera, giro 3D inicial y un carrusel con cortes por franjas y desfasajes de color. Las dos imágenes ESP32 son referencias externas provisionales, no proyectos de Mauro. El detalle conserva sus fuentes y licencias.
+La rama feat/portfolio-glitch añade Bienvenido/Welcome, un dock inferior que aparece al salir de la cabecera, giro 3D inicial y un carrusel con cortes por franjas y desfasajes de color. Las seis tarjetas de electrónica son guías educativas basadas en tutoriales reales, no proyectos construidos por Mauro. Cada detalle incluye materiales, conexiones, programación, pasos y fuentes.
 
-Spotify usa la playlist configurada en src/content/music.ts. No inicia audio automáticamente; minimizar conserva la reproducción. El dock permite pausarla. La reproducción completa o las muestras dependen de Spotify, su disponibilidad y la sesión del visitante.
+Spotify usa la playlist configurada en src/content/music.ts. No inicia audio automáticamente; minimizar conserva la reproducción. La cápsula flotante de música permite pausarla y alternar entre reproductor compacto y playlist. La reproducción completa o las muestras dependen de Spotify, su disponibilidad y la sesión del visitante.

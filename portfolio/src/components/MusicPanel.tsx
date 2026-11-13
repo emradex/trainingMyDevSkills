@@ -4,19 +4,21 @@ import { music } from '../content/music';
 import { loadSpotify, type SpotifyController } from '../graphics/spotify';
 import styles from './MusicPanel.module.css';
 
-export function MusicPanel({ open, onClose, onPlayback, controller }: {
-  open: boolean; onClose: () => void; onPlayback: (playing: boolean) => void;
+export function MusicPanel({ open, onOpen, onClose, playing, onPlayback, controller }: {
+  open: boolean; onOpen: () => void; onClose: () => void; playing: boolean; onPlayback: (playing: boolean) => void;
   controller: React.MutableRefObject<SpotifyController | null>;
 }) {
   const t = useCopy(), host = useRef<HTMLDivElement>(null), close = useRef<HTMLButtonElement>(null);
   const [activated, setActivated] = useState(false), [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
+  const [expanded, setExpanded] = useState(false);
   const playback = useRef(onPlayback); playback.current = onPlayback;
-  const opener = useRef<HTMLElement | null>(null);
+  const wasOpen = useRef(false);
+  const launcher = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (open) {
-      opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       setActivated(true); close.current?.focus({ preventScroll: true });
-    } else if (opener.current?.isConnected) { opener.current.focus({ preventScroll: true }); opener.current = null; }
+    } else if (wasOpen.current) launcher.current?.focus({ preventScroll: true });
+    wasOpen.current = open;
   }, [open]);
   useEffect(() => {
     if (!activated) return;
@@ -25,7 +27,7 @@ export function MusicPanel({ open, onClose, onPlayback, controller }: {
     const timer = window.setTimeout(() => { if (!disposed) setStatus('error'); }, 15000);
     loadSpotify().then(api => {
       if (disposed) return;
-      api.createController(slot, { uri: music.playlistUri, width: '100%', height: 352 }, player => {
+      api.createController(slot, { uri: music.playlistUri, width: '100%', height: 152 }, player => {
         if (disposed) { player.destroy(); return; }
         controller.current = player;
         player.addListener('ready', () => { if (!disposed) { clearTimeout(timer); setStatus('ready'); } });
@@ -40,12 +42,13 @@ export function MusicPanel({ open, onClose, onPlayback, controller }: {
     document.addEventListener('keydown', key);
     return () => document.removeEventListener('keydown', key);
   }, [open, onClose]);
-  return <aside id="music-panel" className={styles.panel} data-open={open || undefined} inert={!open} aria-hidden={!open} aria-label={t.musicPanel}>
+  return <>
+    {!open && <div className={styles.launcher}><button ref={launcher} type="button" onClick={onOpen} aria-controls="music-panel" aria-expanded={false}><span className={styles.symbol} aria-hidden="true">♫</span><span><strong>{t.music}</strong><small>Night visions</small></span>{playing && <i className={styles.playing} aria-label={t.musicPlaying}/>}<span aria-hidden="true">↗</span></button>{playing && <button className={styles.pause} type="button" onClick={() => controller.current?.pause()} aria-label={t.pauseMusic}>Ⅱ</button>}</div>}
+    <aside id="music-panel" className={styles.panel} data-open={open || undefined} data-expanded={expanded || undefined} inert={!open} aria-hidden={!open} aria-label={t.musicPanel}>
     <div className={styles.head}><div><span className={styles.eyebrow}>SOUND / 01</span><h2>{t.musicSelection}</h2></div><button ref={close} type="button" onClick={onClose} aria-label={t.minimizeMusic}>−</button></div>
-    <p className={styles.note}>{t.musicNote}</p>
     {status === 'loading' && <p role="status" className={styles.message}>{t.musicLoading}</p>}
     <div ref={host} className={styles.embed}/>
     {status === 'error' && <p role="status" className={styles.message}>{t.musicUnavailable}</p>}
-    <a className={styles.external} href={music.playlistUrl} target="_blank" rel="noopener noreferrer">{t.openSpotify} ↗</a>
-  </aside>;
+    <div className={styles.actions}><button type="button" aria-expanded={expanded} onClick={() => setExpanded(value => !value)}>{expanded ? t.compactMusic : t.expandMusic} <span aria-hidden="true">{expanded ? '−' : '+'}</span></button><a className={styles.external} href={music.playlistUrl} target="_blank" rel="noopener noreferrer">Spotify ↗<span className={styles.srOnly}> · {t.openSpotify}</span></a></div>
+  </aside></>;
 }

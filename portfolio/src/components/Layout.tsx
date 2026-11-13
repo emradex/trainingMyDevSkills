@@ -44,8 +44,7 @@ export function Layout({ children }: PropsWithChildren) {
       <nav className={styles.dockNav} aria-label={t.floatingNav} style={{ '--active-index': index, '--section-count': navigation.length } as CSSProperties}>
         {navigation.map(section => <a key={section.id} href={`#${section.id}`} aria-current={active === section.id ? 'location' : undefined}>{section.id === 'laboratorio' ? t.labShort : section.label[language]}</a>)}
       </nav>
-      <div className={styles.dockMusic}>{musicButton(true)}{playing && <button type="button" className={styles.pauseMusic} onClick={() => controller.current?.pause()} aria-label={t.pauseMusic}>Ⅱ</button>}</div>
     </div>
-    <MusicPanel open={musicOpen} onClose={closeMusic} onPlayback={setPlaying} controller={controller}/>
+    <MusicPanel open={musicOpen} onOpen={() => setMusicOpen(true)} onClose={closeMusic} playing={playing} onPlayback={setPlaying} controller={controller}/>
   </>;
 }

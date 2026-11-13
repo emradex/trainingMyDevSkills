@@ -1,4 +1,5 @@
 import type { Project } from './types';
+import { electronics } from './electronics';
 
 export const projects: Project[] = [{
   id: 'portfolio', title: { es: 'Portfolio personal', en: 'Personal portfolio' },
@@ -12,18 +13,4 @@ export const projects: Project[] = [{
     { title: { es: 'Lo que funciona hoy', en: 'What works today' }, body: { es: 'Temas claro y oscuro, español e inglés, descarga del CV, contacto y copia del correo, escultura interactiva y un experimento de trama regulable. Los gráficos se dibujan localmente, sin servicios externos.', en: 'Light and dark themes, Spanish and English, CV download, contact links and email copying, an interactive sculpture and an adjustable line experiment. Graphics are rendered locally, without external services.' } },
     { title: { es: 'Lo próximo', en: 'What’s next' }, body: { es: 'Seguir afinando el contenido e incorporar proyectos reales, con su proceso, decisiones técnicas y resultados. El modo de escritorio interactivo queda para una etapa posterior.', en: 'Keep refining the content and add real projects with their process, technical decisions and results. An interactive desktop mode is reserved for a later stage.' } },
   ],
-}, {
-  id: 'esp32-board-reference',
-  title: { es: 'ESP32 · La placa', en: 'ESP32 · The board' },
-  summary: { es: 'Fotografía de referencia para probar el carrusel. Placa de desarrollo ESP32 de SparkFun.', en: 'A reference photo for testing the carousel. An ESP32 development board by SparkFun.' },
-  status: 'placeholder', technologies: ['ESP32', 'SparkFun', 'Hardware'],
-  cover: 'projects/esp32-board.jpg', coverAlt: { es: 'Placa SparkFun Thing Plus ESP32 WROOM con antena externa sobre fondo blanco', en: 'SparkFun Thing Plus ESP32 WROOM board with an external antenna on a white background' },
-  attribution: { author: 'SparkFun Electronics', url: 'https://commons.wikimedia.org/wiki/File:SparkFun_Thing_Plus_SkeleBoard_-_ESP32_WROOM.jpg', license: 'CC BY 2.0', licenseUrl: 'https://creativecommons.org/licenses/by/2.0/' }, story: [],
-}, {
-  id: 'esp32-project-reference',
-  title: { es: 'ESP32 · Sensores en acción', en: 'ESP32 · Sensors in action' },
-  summary: { es: 'Montaje externo de referencia: Security Box, con una placa ESP32, sensores y un display. Imagen provisional.', en: 'An external reference build: Security Box, with an ESP32 board, sensors and a display. Temporary image.' },
-  status: 'placeholder', technologies: ['ESP32', 'IoT', 'Display'],
-  cover: 'projects/esp32-sensors.jpg', coverAlt: { es: 'Montaje Security Box con ESP32, sensores, servos, cables y un display que indica OPEN', en: 'Security Box assembly with ESP32, sensors, servos, wires and a display reading OPEN' },
-  attribution: { author: 'Taqiya Chowdhury', url: 'https://commons.wikimedia.org/wiki/File:Security_Box.png', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/' }, story: [],
-}];
+}, ...electronics];

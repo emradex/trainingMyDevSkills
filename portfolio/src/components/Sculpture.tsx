@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useCopy, usePreferences } from '../app/Preferences';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { drawSculpture, initialOrbit, rotateOrbit, sculptureShapes, sculptureWires, type SculptureShape } from '../graphics/sculpture';
+import { drawSculpture, initialOrbit, rotateOrbit, sculptureFaces, sculptureShapes, sculptureWires, type SculptureShape } from '../graphics/sculpture';
 import { ChoiceGroup } from './ChoiceGroup';
 import styles from './Sculpture.module.css';
 
@@ -18,6 +18,7 @@ export function Sculpture() {
   const [angles, setAngles] = useState({ ...initialOrbit });
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)');
   const wires = useMemo(() => sculptureWires(shape), [shape]);
+  const faces = useMemo(() => shape === 'knot' ? sculptureFaces() : undefined, [shape]);
   useEffect(() => { if (reduced) setMoving(false); }, [reduced]);
   useEffect(() => { playing.current = moving; setAngles({ ...orbit.current }); invalidate.current(); }, [moving]);
 
@@ -25,12 +26,12 @@ export function Sculpture() {
     const element = canvas.current!, ctx = element.getContext('2d');
     if (!ctx) return;
     const palette = getComputedStyle(document.documentElement);
-    const colors = { primary: palette.getPropertyValue('--art-primary').trim(), secondary: palette.getPropertyValue('--art-secondary').trim() };
+    const colors = { primary: palette.getPropertyValue('--art-primary').trim(), secondary: palette.getPropertyValue('--art-secondary').trim(), surface: palette.getPropertyValue('--surface').trim() };
     const size = { width: 0, height: 0 };
     let frame = 0, last = 0, lastLabel = 0;
     let inView = false;
     const visible = () => inView && !document.hidden;
-    const draw = () => drawSculpture(ctx, wires, { ...size, ...orbit.current }, colors);
+    const draw = () => drawSculpture(ctx, wires, { ...size, ...orbit.current }, colors, faces);
     const requestDraw = () => { if (!frame && visible()) frame = requestAnimationFrame(animate); };
     invalidate.current = requestDraw;
     const resize = () => {
@@ -87,7 +88,7 @@ export function Sculpture() {
       element.removeEventListener('pointerup', end); element.removeEventListener('pointercancel', end); element.removeEventListener('lostpointercapture', end);
       element.removeEventListener('keydown', key); document.removeEventListener('visibilitychange', visibility);
     };
-  }, [theme, reduced, wires]);
+  }, [theme, reduced, wires, faces]);
 
   const reset = () => { playing.current = false; setMoving(false); orbit.current = { ...initialOrbit }; setAngles({ ...initialOrbit }); invalidate.current(); };
   const changeShape = (value: SculptureShape) => {

@@ -1,3 +1,16 @@
+# Nudo, reproductor compacto y guías — 13 de noviembre de 2026
+
+- TypeScript y producción correctos; quince pruebas sobre contenido, fuentes, traducciones, PDF, geometría, carrusel y carga opcional de Spotify.
+- Seis guías ES/EN con materiales, conexiones para ESP32 clásico WROOM, explicación del programa y dos fuentes por artículo. Son referencias educativas; no se presentan como montajes propios ni físicamente probados. Diagramas vectoriales propios, rotulados como funcionales, no cableado completo.
+- Spotify: panel fijo en esquina inferior derecha; 152 px compacto y 352 px ampliado; esquinas recortadas a 12 px sobre fondo oscuro. Se comprobó visualmente la desaparición de las esquinas blancas, carga de la playlist, reproducción de muestra, mismo iframe al minimizar y pausa mediante el estado real del servicio. La reproducción completa depende de Spotify y de la sesión.
+- Navegador: español/inglés, claro/oscuro; 320 px, aproximadamente 768 px y 1280 px efectivos. Documento y detalles sin desbordes horizontales. A 320 px el player mantiene unos 289 px útiles (mínimo Spotify: 280 px). La aplicación sigue siendo legible y navegable por teclado.
+- Las seis guías se abrieron y cerraron con Escape en móvil; piezas, pasos y dos enlaces visibles por artículo; retorno del foco a la tarjeta. Se revisó una guía completa en inglés y modo claro.
+- Nudo trefoil de tres lóbulos con superficie opaca y trama: cruces visibles por profundidad. Probados giro con flechas, pausa y reanudación, reinicio y contraste en ambos temas. Se conservan limpieza de eventos, pausa fuera de pantalla y movimiento reducido.
+- Consola sin errores de la aplicación durante la revisión. Gestos táctiles y reproducción en un móvil físico pendientes de comprobación por el usuario.
+- Sin dependencias nuevas. JS comprimido aproximado: 90,3 kB. No se cambiaron la tipografía ni el fondo de contacto, pendientes de aprobación de diseño.
+
+## Validación histórica
+
 # Prueba glitch, Spotify y navegación — 10 de noviembre de 2026
 
 - TypeScript y producción correctos. Catorce pruebas sobre contenido, traducciones, PDF, gráficos, límites del carrusel, atribución de imágenes y carga opcional de Spotify.

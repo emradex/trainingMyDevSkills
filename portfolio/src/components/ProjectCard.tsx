@@ -14,12 +14,12 @@ function Preview({ project, index }: { project: Project; index: number }) {
 }
 export function ProjectCard({ project, index, onOpen, signal = 0 }: { project: Project; index: number; onOpen: () => void; signal?: number }) {
   const t = useCopy(), { language } = usePreferences(), shadow = usePointerShadow();
-  const placeholder = project.status === 'placeholder';
+  const placeholder = project.status === 'placeholder', guide = project.status === 'guide';
   return <button {...shadow} type="button" className={styles.card} onClick={onOpen} aria-haspopup="dialog">
     <span className={styles.visual} aria-hidden="true">
       <Preview project={project} index={index}/>
       {signal > 0 && <span key={signal} className={styles.interference}>{[0,1,2].map(layer => <span key={layer} className={styles.slice}><Preview project={project} index={index}/></span>)}</span>}
     </span>
-    <span className={styles.info}><span className={styles.status}><i/>{placeholder ? t.placeholder : project.status === 'published' ? t.published : t.development}</span><span className={styles.title}>{project.title[language]}</span><span className={styles.summary}>{project.summary[language]}</span><span className={styles.tech}>{project.technologies.join(' / ')}</span><span className={styles.cta}>{placeholder ? t.viewImage : t.process}<span aria-hidden="true">↗</span></span></span>
+    <span className={styles.info}><span className={styles.status}><i/>{guide ? t.guideLabel : placeholder ? t.placeholder : project.status === 'published' ? t.published : t.development}</span><span className={styles.title}>{project.title[language]}</span><span className={styles.summary}>{project.summary[language]}</span><span className={styles.tech}>{project.technologies.join(' / ')}</span><span className={styles.cta}>{guide ? t.readGuide : placeholder ? t.viewImage : t.process}<span aria-hidden="true">↗</span></span></span>
   </button>;
 }
