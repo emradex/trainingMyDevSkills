@@ -40,7 +40,7 @@ El registro controla el contenido y el menú. No hay textos con HTML incrustado 
 
 ## Funcionalidades
 
-Inicio con nombre protagonista y firma; temas claro/oscuro; ES/EN; preferencias persistentes compatibles con V2; contacto y copia con alternativa manual; CV local reutilizado desde cabecera, inicio y contacto; detalle de proyectos accesible; escultura Canvas con tres formas y giro por arrastre o teclado; laboratorio SVG con Roseta, Órbitas y Moiré, densidad y deformación; retícula de fondo estática; paleta coral/violeta en claro y lima/violeta en oscuro; sombras de hasta 4 px sin inercia artificial. Fuentes alojadas junto al sitio. Sin servicios externos en tiempo de ejecución.
+Inicio con nombre protagonista y firma; temas claro/oscuro; ES/EN; preferencias persistentes compatibles con V2; contacto y copia con alternativa manual; CV local reutilizado desde cabecera, inicio y contacto; detalle de proyectos accesible; escultura Canvas con tres formas y giro por arrastre o teclado; laboratorio SVG con Roseta, Órbitas y Moiré, densidad y deformación; retícula de fondo estática; paleta coral/violeta en claro y lima/violeta en oscuro; sombras de hasta 4 px sin inercia artificial. Fuentes alojadas junto al sitio. Los gráficos, fuentes y CV son locales. Spotify es una integración externa opcional que se carga al abrir Música.
 
 Se mantienen las anclas #inicio, #sobre-mi, #proyectos, #laboratorio y #contacto. El escritorio interactivo alternativo queda para otra etapa. El único proyecto es el propio portfolio, identificado en desarrollo.
 
@@ -53,3 +53,9 @@ Dos páginas en español, a partir del CV General IT v1. Conserva antecedentes y
 Comprobar tipos, pruebas y compilación; revisar ambos temas e idiomas a 320 px, tableta y escritorio. Probar navegación, foco, Escape, contacto, PDF y gráficos. El resultado dist/ se sirve por HTTP en Sites u otro alojamiento estático. No hay servidor, base de datos ni autenticación propia.
 
 Conservar v2-base; trabajar en ramas y revisar los cambios antes de integrarlos en main. node_modules/, .sites-runtime/ y dist/ son generados e ignorados por Git.
+
+## Prueba de navegación y movimiento
+
+La rama feat/portfolio-glitch añade Bienvenido/Welcome, un dock inferior que aparece al salir de la cabecera, giro 3D inicial y un carrusel con cortes por franjas y desfasajes de color. Las seis tarjetas de electrónica son guías educativas basadas en tutoriales reales, no proyectos construidos por Mauro. Cada detalle incluye materiales, conexiones, programación, pasos y fuentes.
+
+Spotify usa la playlist configurada en src/content/music.ts. No inicia audio automáticamente; minimizar conserva la reproducción. La cápsula flotante de música permite pausarla y alternar entre reproductor compacto y playlist. La reproducción completa o las muestras dependen de Spotify, su disponibilidad y la sesión del visitante.

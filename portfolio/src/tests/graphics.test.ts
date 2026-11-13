@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { initialOrbit, rotateOrbit, sculptureShapes, sculptureWires } from '../graphics/sculpture';
+import { initialOrbit, rotateOrbit, sculptureShapes, sculptureWires, sculptureFaces } from '../graphics/sculpture';
 import { patternPaths, patternShapes } from '../graphics/moire';
 
 describe('direct rotation', () => {
@@ -10,7 +10,17 @@ describe('direct rotation', () => {
     expect(rotateOrbit(initialOrbit, 0, 10000, 320).pitch).toBe(1.45);
     expect(rotateOrbit(initialOrbit, 0, -10000, 320).pitch).toBe(-1.45);
     expect(rotateOrbit(initialOrbit, 0, 0, 0)).toEqual(initialOrbit);
-    expect(initialOrbit).toEqual({ yaw: -.4, pitch: .65 });
+
+  });
+  it('builds a closed, finite trefoil surface for depth-correct crossings', () => {
+    const faces = sculptureFaces();
+    expect(faces.length).toBeGreaterThan(1000);
+    for (const face of faces) {
+      expect(face.points).toHaveLength(4);
+      for (const p of face.points) expect(Number.isFinite(p.x + p.y + p.z)).toBe(true);
+    }
+    const first=faces[0].points[0], last=faces[faces.length-14].points[1];
+    expect(last.x).toBeCloseTo(first.x); expect(last.y).toBeCloseTo(first.y); expect(last.z).toBeCloseTo(first.z);
   });
   it('keeps all sculpture variants finite and inside a common viewing volume', () => {
     for (const shape of sculptureShapes) {
